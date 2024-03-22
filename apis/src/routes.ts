@@ -14,18 +14,18 @@ export default class Routes implements RoutesInterface{
          this.app = param
      }
  
-     healthCheck(){
-         return this.app.get('/api/healthcheck', 
-             (req:Request, res:Response)=> res.status(200).send({message: "App is running properly"})
-         )
-     }
+    healthCheck(){
+    return this.app.get('/api/healthcheck', 
+        (req:Request, res:Response)=> res.status(200).send({message: "App is running properly"})
+    )
+    }
 
-     createUser(){
-        return this.app.post("/api/users", validate(customerSchema), createUserHandler)
-     }
+    createUser(){
+    return this.app.post("/api/users", validate(customerSchema), createUserHandler)
+    }
 
-     getUsers(){
-        return this.app.get("/api/users", getUsersHandler)
-     }
+    getUsers(){
+    return this.app.get("/api/users", getUsersHandler)
+    }
  }
  
