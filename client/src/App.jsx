@@ -16,23 +16,23 @@ import useFetch from './hooks/useFetch';
 
 function App() {
 
-  //const [markerRef, marker] = useAdvancedMarkerRef();
+ 
   const apiIsLoaded = useApiIsLoaded();
 
 
-const positions = [
-  {lat:6.4550, lng:3.3841},
-  {lat:9.0667, lng:7.4833},
-  {lat:7.3964, lng:3.9167},
-  {lat:6.2069, lng:7.0678},
-  {lat:12.0000, lng:8.5167},
-  {lat:4.8242, lng:7.0336},
-  {lat:6.3333, lng:6.8333},
-  {lat:6.1667, lng:6.7833},
-  {lat:11.8333, lng:13.1500},
-  {lat:5.1167, lng:7.3667},
-  {lat:6.3333, lng:5.6222}
-]
+// const positions = [
+//   {lat:6.4550, lng:3.3841},
+//   {lat:9.0667, lng:7.4833},
+//   {lat:7.3964, lng:3.9167},
+//   {lat:6.2069, lng:7.0678},
+//   {lat:12.0000, lng:8.5167},
+//   {lat:4.8242, lng:7.0336},
+//   {lat:6.3333, lng:6.8333},
+//   {lat:6.1667, lng:6.7833},
+//   {lat:11.8333, lng:13.1500},
+//   {lat:5.1167, lng:7.3667},
+//   {lat:6.3333, lng:5.6222}
+// ]
 
  
 
@@ -61,7 +61,7 @@ const positions = [
           {
             customers?.length > 0 && (
               customers.map(d=> 
-                <PinLocation pos={d?.pos}  key={d?.pos?.lng}/>
+                <PinLocation pos={d?.pos}  key={d?._id} user={d}/>
               )
             )
             

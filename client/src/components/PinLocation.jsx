@@ -12,7 +12,7 @@ import { useState } from 'react';
 import CustomerDetails from './CustomerDetails';
 
 
-const PinLocation = ({pos}) => {
+const PinLocation = ({pos, user}) => {
 
     const [markerRef, marker] = useMarkerRef();
     const [infowindowShown, setInfowindowShown] = useState(false);
@@ -29,7 +29,7 @@ const PinLocation = ({pos}) => {
         
         {infowindowShown && (
             <InfoWindow anchor={marker} onCloseClick={toggleInfoWindow}>
-            <CustomerDetails/>
+            <CustomerDetails user={user}/>
             </InfoWindow>
         )}
    </>
@@ -38,6 +38,7 @@ const PinLocation = ({pos}) => {
 
 PinLocation.propTypes = {
   pos: PropTypes.object,
+  user: PropTypes.object
 }
 
 export default PinLocation

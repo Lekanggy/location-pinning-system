@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import { Column } from "../../globalStyled"
+import PropTypes from 'prop-types'
 
 const Wrapper = styled(Column)`
    
@@ -25,23 +26,31 @@ const Wrapper = styled(Column)`
 const Detail = styled(Column)`
    gap: 0.2rem;
 `
-const CustomerDetails = () => {
+const CustomerDetails = ({user}) => {
   return (
     <Wrapper>
         <Detail className="detail">
             <span className="c-name">Name</span>
-            <span className="c-text">Aderinsole hule</span>
+            <span className="c-text">{user?.name}</span>
         </Detail>
         <Detail className="detail">
             <span className="c-name">Address</span>
-            <span className="c-text">Aderinsole hule hamo dshgjfghjrtui</span>
+            <span className="c-text">{user?.address}</span>
         </Detail>
         <Detail className="detail">
             <span className="c-name">Contact Info</span>
-            <span className="c-text">Aderinsole hule hamo dshgjfghjrtui</span>
+            <span className="c-text">{user?.address}</span>
+        </Detail>
+        <Detail className="detail">
+            <span className="c-name">Distance</span>
+            <span className="c-text">{user?.dist + "Km"}</span>
         </Detail>
     </Wrapper>
   )
+}
+
+CustomerDetails.propTypes = {
+    user: PropTypes.object
 }
 
 export default CustomerDetails
