@@ -1,40 +1,45 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 //import './App.css'
 import { 
   APIProvider, 
   Map,
-  Marker,
-  Pin,
-  AdvancedMarker,
-  useAdvancedMarkerRef,
-  InfoWindow,
-  useMarkerRef,
   useApiIsLoaded,
 
  } from '@vis.gl/react-google-maps'
 import useLocation from './hooks/useLocation';
 import CustomerForm from './components/CustomerForm';
 import MapEvent from './components/MapEvent';
+import PinLocation from './components/PinLocation';
+import useFetch from './hooks/useFetch';
 
 
 function App() {
-  const [markerRef, marker] = useMarkerRef();
+
   //const [markerRef, marker] = useAdvancedMarkerRef();
   const apiIsLoaded = useApiIsLoaded();
-  const [infowindowShown, setInfowindowShown] = useState(false);
 
+
+const positions = [
+  {lat:6.4550, lng:3.3841},
+  {lat:9.0667, lng:7.4833},
+  {lat:7.3964, lng:3.9167},
+  {lat:6.2069, lng:7.0678},
+  {lat:12.0000, lng:8.5167},
+  {lat:4.8242, lng:7.0336},
+  {lat:6.3333, lng:6.8333},
+  {lat:6.1667, lng:6.7833},
+  {lat:11.8333, lng:13.1500},
+  {lat:5.1167, lng:7.3667},
+  {lat:6.3333, lng:5.6222}
+]
 
  
 
 
-
-  const toggleInfoWindow = () =>
-    setInfowindowShown(previousState => !previousState);
-
-
   const {pos} = useLocation()
-  //console.log("User", pos)
+  const {customers} = useFetch()
+  console.log("User", customers)
 
   useEffect(() => {
     if (!apiIsLoaded) return;
@@ -53,20 +58,17 @@ function App() {
           //disableDefaultUI={true}
         >
 
-          <Marker ref={markerRef} position={{lat: pos?.lat, lng: pos?.lng}} onClick={toggleInfoWindow}/>
-           
-          {infowindowShown && (
-             <InfoWindow anchor={marker} onCloseClick={toggleInfoWindow}>
-             <h2>Hello everyone!</h2>
-             <p>This is an Info Window</p>
-             <img src="..." />
-           </InfoWindow>
-          )}
-           
-          
+          {
+            positions.map(d=> 
+                <PinLocation pos={d}  key={d?.lng}/>
+              )
+          }
+          <PinLocation pos={pos}/>
         </Map>
+
         <MapEvent/>
         <CustomerForm/>
+
       </APIProvider>
      
     </>

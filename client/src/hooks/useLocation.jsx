@@ -7,9 +7,9 @@ const useLocation = () => {
    
     useEffect(()=>{
         if(navigator.geolocation){
-            navigator.geolocation.getCurrentPosition((position)=>{
+            navigator.geolocation?.getCurrentPosition((position)=>{
                 if(position) 
-                    setPos({lat: position.coords.latitude, lng: position.coords.longitude});
+                    setPos({lat: position?.coords?.latitude, lng: position?.coords?.longitude});
             }, errorCallback)
         }
        

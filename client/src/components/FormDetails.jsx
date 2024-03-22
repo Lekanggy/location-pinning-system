@@ -4,6 +4,8 @@ import {Form, FormGroup, Label, Input, Button, FormTitle} from './form.styled';
 const FormDetails = () => {
 
     const {handleChange, handleSubmit, formData} = useForm()
+
+    console.log("fomr", formData)
   return (
     <Form onSubmit={handleSubmit}>
         <FormTitle>Customer Details</FormTitle>

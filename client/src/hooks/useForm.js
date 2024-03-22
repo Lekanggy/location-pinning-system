@@ -1,15 +1,27 @@
-import {useEffect, useState} from 'react'
+import {useEffect} from 'react'
 import { client } from '../utils/axios-instance';
+import useCustomer from './useCustomer';
 
 const useForm = () => {
-  const [open, setOpen] = useState(false)
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [dataState, setDataState] = useState("")
-  const [formData, setFormData] = useState({
-    name: '',
-    address: '',
-    contactInfo: '',
-  });
+  const {
+    open, 
+    setOpen, 
+    isSubmitting, 
+    setIsSubmitting, 
+    dataState, 
+    setDataState,
+    formData, 
+    setFormData
+  } = useCustomer()
+  // const [open, setOpen] = useState(false)
+  // const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [dataState, setDataState] = useState("")
+  // const [formData, setFormData] = useState({
+  //   name: '',
+  //   address: '',
+  //   contactInfo: '',
+  //   pos: {lat: 0, lng: 0}
+  // });
 
   const toggleForm = ()=> setOpen(prev=>!prev)
   const submitData = ()=>{
@@ -37,7 +49,7 @@ const useForm = () => {
     const submitForm = async ()=>{
       const request = client()
       try {
-        await request.post().then(()=>{
+        await request.post('http://localhost:1550/api/users', formData).then(()=>{
           setDataState("success")
         }).catch(error=>{
           console.log(error)
@@ -53,12 +65,13 @@ const useForm = () => {
     if(isSubmitting){
       submitForm()
     }
-  }, [isSubmitting])
+  }, [isSubmitting, formData, setDataState])
   
     return {
         handleChange, 
         handleSubmit, 
         formData,
+        setFormData,
         dataState, 
         open, 
         setOpen, 
