@@ -1,14 +1,16 @@
 import useForm from '../hooks/useForm';
-import {Form, FormGroup, Label, Input, Button, FormTitle} from './form.styled';
+import Loader from './Loader';
+import {Form, FormGroup, Label, Input, Button, FormTitle, Text} from './form.styled';
 
 const FormDetails = () => {
 
-    const {handleChange, handleSubmit, formData} = useForm()
+    const {handleChange, handleSubmit, formData, dataState} = useForm()
 
     console.log("fomr", formData)
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form>
         <FormTitle>Customer Details</FormTitle>
+        <Text>👉 click the map interface to add location</Text>
         <FormGroup>
           <Label htmlFor="name">Name</Label>
           <Input
@@ -35,14 +37,21 @@ const FormDetails = () => {
           <Label htmlFor="contactInfo">Contact Information</Label>
           <Input
             type="text"
-            id="contactInfo"
-            name="contactInfo"
-            value={formData.contactInfo}
+            id="contact"
+            name="contact"
+            value={formData.contact}
             onChange={handleChange}
             required
           />
         </FormGroup>
-        <Button type="submit">Submit</Button>
+        <Button type="submit" onClick={handleSubmit} disabled={dataState === "loading"}>
+          {
+            (dataState === "idle"  || dataState === "success") && "Submit"
+          }
+          {
+            dataState === "loading" && <Loader/>
+          }
+        </Button>
       </Form>
   )
 }

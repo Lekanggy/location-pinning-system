@@ -4,14 +4,14 @@ export interface IUser {
     name: string,
     address: string,
     contact: string
-    location: {lat:number, lng: number}
+    pos: {lat:number, lng: number}
 }
 
 const userSchema = new Schema<IUser>({
     name:{type:String, required: true},
     address: {type:String, required: true},
     contact: {type: String, required: true},
-    location: {type: Schema.Types.Mixed},
+    pos: {type: Schema.Types.Mixed},
    
 }, {timestamps: true})
 

@@ -59,9 +59,12 @@ const positions = [
         >
 
           {
-            positions.map(d=> 
-                <PinLocation pos={d}  key={d?.lng}/>
+            customers?.length > 0 && (
+              customers.map(d=> 
+                <PinLocation pos={d?.pos}  key={d?.pos?.lng}/>
               )
+            )
+            
           }
           <PinLocation pos={pos}/>
         </Map>

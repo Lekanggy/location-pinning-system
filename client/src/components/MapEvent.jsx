@@ -7,6 +7,8 @@ const MapEvent = () => {
 
     const map = useMap("54fe67695b6cbfc7")
     const {setFormData} = useForm()
+
+   
   useEffect(()=>{
     if(!map) return;
 
@@ -14,9 +16,11 @@ const MapEvent = () => {
       setFormData(prev=>{
         return {
           ...prev,
-          pos: {lat:e.latLng.lat(), lng:e.latLng.lng()}
+          pos: {lat:e.latLng.lat(), lng:e.latLng.lng()} 
         }
       })
+
+      // map.setZoom( {lat:e.latLng.lat(), lng:e.latLng.lng()})
         console.log("eee", e.latLng.lng())
         console.log("eee", e.latLng.lat())
     })

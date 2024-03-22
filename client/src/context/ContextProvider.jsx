@@ -1,8 +1,10 @@
 import {createContext, useState } from "react";
 import PropTypes from 'prop-types'
+import { dataForm } from "../components/data";
 
 
 export const CustomerCtx = createContext({})
+
 
 
 const ContextProvider = ({children})=>{
@@ -11,27 +13,25 @@ const ContextProvider = ({children})=>{
     const initialState = {
         tempMarkerPos: {lat:0, lng: 0}
     }
-    const [dataItem, setItem] = useState(initialState)
-    const [open, setOpen] = useState(false)
-    const [isSubmitting, setIsSubmitting] = useState(false)
-    const [dataState, setDataState] = useState("")
-    const [formData, setFormData] = useState({
-      name: '',
-      address: '',
-      contactInfo: '',
-      pos: {lat: 0, lng: 0}
-    });
+    const [center, setCenter] = useState(initialState)
+    const [open, setOpen] = useState(false);
+    const [pos, setPos] = useState(null)
+    const [customers, setCustomers] = useState([])
+    const [dataState, setDataState] = useState("idle")
+    const [formData, setFormData] = useState(dataForm);
 
     return(
         <CustomerCtx.Provider value={{
-                dataItem, 
-                setItem, 
+                center, 
+                setCenter, 
                 open, 
                 setOpen, 
-                isSubmitting, 
-                setIsSubmitting, 
                 dataState, 
                 setDataState,
+                customers, 
+                setCustomers,
+                pos,
+                setPos,
                 formData, 
                 setFormData
             }}

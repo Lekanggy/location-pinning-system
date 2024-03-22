@@ -13,6 +13,13 @@ export const FormContainer = styled.div`
   border-radius: 8px;
  
 `;
+export const Text = styled.span`
+  font-size: 12px;
+  font-size: 400;
+  color: #088F71;
+  //color: "#4DD245";
+  padding-bottom: 1rem;
+`
 
 export const FormTitle = styled.span`
      //display:inline-block;
