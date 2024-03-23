@@ -6,7 +6,7 @@ const FormDetails = () => {
 
     const {handleChange, handleSubmit, formData, dataState} = useForm()
 
-    console.log("fomr", formData)
+   
   return (
     <Form>
         <FormTitle>Customer Details</FormTitle>

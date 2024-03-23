@@ -42,7 +42,7 @@ const useForm = () => {
   useEffect(()=>{
     const submitForm = async ()=>{
       const request = client()
-      console.log("inside form", isSubmitting)
+    
       try {
         await request.post('http://localhost:1550/api/users', formData).then(()=>{
           setFormData(dataForm)

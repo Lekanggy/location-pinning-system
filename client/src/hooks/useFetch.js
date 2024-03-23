@@ -38,8 +38,6 @@ const useFetch = () => {
         console.log(error)
       }
     }, [addDistance])
-    console.log("posss", customers)
-
    
     useEffect(()=>{
         

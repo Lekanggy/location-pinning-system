@@ -33,4 +33,8 @@ After successfully run both client and server side:
 
 `Note:`
 
-*Incase the map doesn't show up immediately try to refresh the browser. This may occur because the map use was on the development mode and no billing info was attached nor a valid map id.* 
+*Incase the map doesn't show up immediately try to refresh the browser. This may occur because the map use was on the development mode and no billing info was attached and neither a varification map id or apikey was attached.
+So the more reason they were both exposed* 
+
+
+

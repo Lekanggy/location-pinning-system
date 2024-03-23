@@ -21,8 +21,7 @@ const MapEvent = () => {
       })
 
       // map.setZoom( {lat:e.latLng.lat(), lng:e.latLng.lng()})
-        console.log("eee", e.latLng.lng())
-        console.log("eee", e.latLng.lat())
+       
     })
   },[map, setFormData])
 
