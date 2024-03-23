@@ -17,20 +17,22 @@ to start the server from the root folder
 
 run:
 
-`yarn install`
+`cd into the apis folder`
 
-`yarn dev`
+`yarn install` to install all the dependencies
+
+`yarn dev` to start the app
 
 ### Client 
 
 Navigate to the root folder
 
-`cd into client/`
+`cd into the client folder`
 and run:
 
-`yarn install`
+`yarn install` to install all the dependencies.
 
-`yarn dev`
+`yarn dev` to start the app.
 
 After successfully run both client and server side:
 
