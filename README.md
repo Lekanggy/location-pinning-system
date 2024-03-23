@@ -11,11 +11,13 @@ Clone the repo to your local machine using by using this command:
 ### Start server
 You can run the server on whichever port of your choice. To change the port or any parameter on the server:
 
-`cd apis/config/default`
+`cd into apis/config/default`
 
 to start the server from the root folder
 
 run:
+
+`yarn install`
 
 `yarn dev`
 
@@ -23,8 +25,10 @@ run:
 
 Navigate to the root folder
 
-`cd client/`
+`cd into client/`
 and run:
+
+`yarn install`
 
 `yarn dev`
 
