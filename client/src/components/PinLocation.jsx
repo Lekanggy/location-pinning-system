@@ -2,9 +2,6 @@ import PropTypes from 'prop-types';
 import { 
 
     Marker,
-    // Pin,
-    // AdvancedMarker,
-    // useAdvancedMarkerRef,
     InfoWindow,
     useMarkerRef,
    } from '@vis.gl/react-google-maps'
