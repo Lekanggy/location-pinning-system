@@ -43,7 +43,7 @@ const CustomerDetails = ({user}) => {
         </Detail>
         <Detail className="detail">
             <span className="c-name">Distance</span>
-            <span className="c-text">{user?.dist + "Km"}</span>
+            <span className="c-text">{user?.dist.toFixed(3) + "Km"}</span>
         </Detail>
     </Wrapper>
   )

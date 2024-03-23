@@ -15,6 +15,7 @@ const ContextProvider = ({children})=>{
     }
     const [center, setCenter] = useState(initialState)
     const [open, setOpen] = useState(false);
+    const [refresh, setRefresh] = useState(false);
     const [pos, setPos] = useState(null)
     const [customers, setCustomers] = useState([])
     const [dataState, setDataState] = useState("idle")
@@ -26,6 +27,8 @@ const ContextProvider = ({children})=>{
                 setCenter, 
                 open, 
                 setOpen, 
+                refresh,
+                setRefresh,
                 dataState, 
                 setDataState,
                 customers, 

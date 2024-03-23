@@ -9,6 +9,7 @@ const useForm = () => {
     setOpen, 
     dataState, 
     setDataState,
+    setRefresh,
     formData, 
     setFormData
   } = useCustomer()
@@ -31,7 +32,7 @@ const useForm = () => {
     e.preventDefault();
     if(formData !== null && formData?.pos?.lat > 0){
       // Handle form submission here, e.g., send data to server
-      console.log('Form submitted:', formData);
+      //console.log('Form submitted:', formData);
       submitData()
     }
     return;
@@ -43,10 +44,10 @@ const useForm = () => {
       const request = client()
       console.log("inside form", isSubmitting)
       try {
-        await request.post('http://localhost:1550/api/users', formData).then((res)=>{
+        await request.post('http://localhost:1550/api/users', formData).then(()=>{
           setFormData(dataForm)
           setDataState("success")
-          console.log(res.data)
+          setRefresh(true)
         }).catch(error=>{
           console.log(error)
           setDataState("failed")

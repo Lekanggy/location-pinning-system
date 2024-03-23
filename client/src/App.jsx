@@ -12,12 +12,17 @@ import CustomerForm from './components/CustomerForm';
 import MapEvent from './components/MapEvent';
 import PinLocation from './components/PinLocation';
 import useFetch from './hooks/useFetch';
+import useCustomer from './hooks/useCustomer';
 
 
 function App() {
 
  
   const apiIsLoaded = useApiIsLoaded();
+  const {pos} = useLocation()
+  const {customers, fetch} = useFetch()
+  const {refresh, setRefresh} = useCustomer()
+  
 
 
 // const positions = [
@@ -34,12 +39,14 @@ function App() {
 //   {lat:6.3333, lng:5.6222}
 // ]
 
- 
+useEffect(()=>{
+  if(refresh){
+    fetch()
+    setRefresh(false)
+  }
+},[refresh, setRefresh, fetch])
 
 
-  const {pos} = useLocation()
-  const {customers} = useFetch()
-  console.log("User", customers)
 
   useEffect(() => {
     if (!apiIsLoaded) return;
@@ -54,8 +61,6 @@ function App() {
           defaultCenter={{lat: pos?.lat, lng: pos?.lng}}
           defaultZoom={3}
           id="54fe67695b6cbfc7"
-          //gestureHandling={'greedy'}
-          //disableDefaultUI={true}
         >
 
           {
@@ -66,7 +71,7 @@ function App() {
             )
             
           }
-          <PinLocation pos={pos}/>
+          <PinLocation pos={pos} currentLocate={true}/>
         </Map>
 
         <MapEvent/>
